@@ -1,8 +1,13 @@
 package com.watxaut.trasloco_27
 
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.FrameLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import co.zsmb.materialdrawerkt.builders.accountHeader
 import co.zsmb.materialdrawerkt.builders.drawer
 import co.zsmb.materialdrawerkt.builders.footer
@@ -14,35 +19,64 @@ import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.Drawer
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()  {
 
     private lateinit var result: Drawer
     private lateinit var headerResult: AccountHeader
 
 
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.navigation_home -> {
-                message.setText(R.string.title_home)
-                return@OnNavigationItemSelectedListener true
+    private val mOnNavigationItemSelectedListener = object : BottomNavigationView.OnNavigationItemSelectedListener {
+        override fun onNavigationItemSelected(item: MenuItem): Boolean {
+            when (item.itemId) {
+                R.id.navigation_home -> {
+
+                    val fragment = FragmentHome.Companion.newInstance()
+                    addFragment(fragment)
+
+                    return true
+                }
+                R.id.navigation_maps -> {
+                    val fragment = FragmentMaps()
+                    addFragment(fragment)
+                    return true
+                }
+                R.id.navigation_tickets -> {
+                    var fragment = FragmentTickets()
+                    addFragment(fragment)
+                    return true
+                }
             }
-            R.id.navigation_dashboard -> {
-                message.setText(R.string.title_dashboard)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
-                return@OnNavigationItemSelectedListener true
-            }
+            return false
         }
-        false
+    }
+
+    private fun addFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .setCustomAnimations(R.anim.design_bottom_sheet_slide_in, R.anim.design_bottom_sheet_slide_out)
+            .replace(R.id.contentfragment, fragment, fragment.javaClass.getSimpleName())
+            .addToBackStack(fragment.javaClass.getSimpleName())
+            .commit()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val content = findViewById<FrameLayout>(R.id.contentfragment)
+        val navigation = findViewById<BottomNavigationView>(R.id.navigation)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+//        val mapFragment =
+//            supportFragmentManager.findFragmentById(R.id.map) as FragmentMaps
+//        /*mapFragment.initial_latitude = -10.0
+//        mapFragment.initial_longitude = 115.0
+//        mapFragment.initial_marker = "Inishol mawker"*/
+//        mapFragment.getMapAsync(mapFragment)
+//        System.err.println("OnCreate end")
+
+        val fragment = FragmentHome.Companion.newInstance()
+        addFragment(fragment)
 
         result = drawer {
             toolbar = this@MainActivity.toolbar
@@ -58,38 +92,35 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-
-//            primaryItem("Drawer item types") {
-//                iicon = GoogleMaterial.Icon.gmd_cloud
-//                onClick(openActivity(DrawerItemTypesActivity::class))
-//            }
-//            primaryItem("Account header options") {
-//                iicon = MaterialDesignIconic.Icon.gmi_account
-//                onClick(openActivity(AccountHeaderActivity::class))
-//            }
-//            primaryItem("Header and footer") {
-//                iicon = GoogleMaterial.Icon.gmd_menu
-//                onClick(openActivity(HeaderFooterActivity::class))
-//            }
-//            primaryItem("Listeners") {
-//                iicon = MaterialDesignIconic.Icon.gmi_audio
-//                onClick(openActivity(ListenersActivity::class))
-//            }
-//            primaryItem("Badges") {
-//                iicon = MaterialDesignIconic.Icon.gmi_tag
-//                onClick(openActivity(BadgesActivity::class))
-//            }
-
             primaryItem("Home") {}
             divider {}
             primaryItem("Users") {}
+            primaryItem("Referral") {}
             secondaryItem("Settings") {}
 
             footer {
                 primaryItem("Primary item")
-                secondaryItem("Secondary item")
+                secondaryItem("Log Out")
             }
 
         }
+
+        setUpMap()
     }
+
+    private fun setUpMap() {
+        if (ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+            return
+        }
+    }
+
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+    }
+
+
 }

@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">trasloco-27</string>
+    <string name="app_name">WEIGO</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_splash">trasloco</string>
+    <string name="title_maps">Maps</string>
+    <string name="tittle_tickets">Tickets</string>
+    <string name="title_activity_splash">WEIGO</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
