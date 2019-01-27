@@ -6,6 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_tickets.view.*
+import androidx.recyclerview.widget.LinearLayoutManager
+
+
 
 
 class FragmentTickets : Fragment() {
@@ -26,7 +31,9 @@ class FragmentTickets : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootView = inflater.inflate(R.layout.fragment_tickets, container, false)
+        var rootView = inflater.inflate(R.layout.card_targeta, container, false)
+
+
         return rootView
     }
 

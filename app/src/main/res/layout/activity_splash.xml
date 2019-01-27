@@ -2,20 +2,17 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="#ffffff"
+             android:background="@color/back_splash"
              tools:context="com.watxaut.trasloco_27.SplashActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView
-            android:id="@+id/fullscreen_content"
+    <ImageView
+            android:src="@drawable/splashimg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:keepScreenOn="true"
-            android:text="@string/app_name"
-            android:textColor="#000"
-            android:textSize="25sp" />
+            android:keepScreenOn="true"/>
 
 </FrameLayout>

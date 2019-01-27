@@ -7,7 +7,7 @@
             android:id="@+id/textViewHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Home"
+            android:text="Welcome Joan!"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
@@ -16,8 +16,11 @@
 
     <EditText
             android:id="@+id/editTextHome"
+            android:hint="Where do you want to go?"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
     />
+
+
 </RelativeLayout>
