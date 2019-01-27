@@ -90,7 +90,14 @@ class MainActivity : AppCompatActivity()  {
 
             primaryItem("Home") { icon = R.drawable.baseline_home_black_18dp}
             divider {}
-            primaryItem("Ranking") { icon = R.drawable.baseline_star_black_18dp }
+            primaryItem("Ranking") {
+                icon = R.drawable.baseline_star_black_18dp
+                onClick { _ ->
+                    val intent = Intent(this@MainActivity, RankingActivity::class.java)
+                    startActivity(intent)
+                    false
+                }
+            }
             primaryItem("Referral") {
 
                 onClick { _ ->

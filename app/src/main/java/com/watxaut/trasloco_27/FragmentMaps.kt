@@ -55,6 +55,33 @@ class FragmentMaps : SupportMapFragment() {
         arrayOf(41.413503, 2.177152)
     )
 
+    private val scoot_arr = arrayOf(
+        arrayOf(41.398513, 2.187012),
+        arrayOf(41.398103, 2.182645),
+        arrayOf(41.399101, 2.176723),
+        arrayOf(41.401419, 2.172592),
+        arrayOf(41.392896, 2.178306),
+        arrayOf(41.393910, 2.173993),
+        arrayOf(41.392767, 2.168017),
+        arrayOf(41.394127, 2.165077),
+        arrayOf(41.391608, 2.178238),
+        arrayOf(41.390465, 2.180582),
+        arrayOf(41.393322, 2.180003)
+    )
+
+    private val metro_arr = arrayOf(
+        arrayOf("Arc de triomf" , 41.392095, 2.181226),
+        arrayOf("Marina", 41.395208, 2.187026),
+        arrayOf( "Bogatell", 41.395119, 2.192004),
+        arrayOf( "Llacuna", 41.399086, 2.197097),
+        arrayOf( "Estació del Poblenou", 41.399086, 2.197097),
+        arrayOf( "Glories", 41.402522, 2.187671),
+        arrayOf( "Encants", 41.406679, 2.182512),
+        arrayOf( "Sagrada família", 41.404353, 2.174631),
+        arrayOf( "Monumental", 41.400463, 2.179419),
+        arrayOf( "Girona", 41.394653, 2.171317)
+    )
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val rootView = inflater.inflate(R.layout.fragment_maps, container, false)
@@ -106,6 +133,28 @@ class FragmentMaps : SupportMapFragment() {
                     .title("ecooltra")
                     .snippet("Moto")
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.ecooltra)))
+
+            }
+
+            // Add scoot to map
+            for (arr in scoot_arr) {
+                googleMap!!.addMarker(MarkerOptions().position(LatLng(arr[0], arr[1]))
+                    .title("Scoot")
+                    .snippet("Moto")
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.scoot)))
+
+            }
+
+            // Add metro to map
+            for (arr in metro_arr) {
+                var name : String = arr[0] as String
+                var lat : Double = arr[1] as Double
+                var long : Double = arr[2] as Double
+
+                googleMap!!.addMarker(MarkerOptions().position(LatLng(lat, long))
+                    .title(name)
+                    .snippet("Moto")
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.metro )))
 
             }
 
