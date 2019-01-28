@@ -21,6 +21,7 @@
 
     <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
                app:layout_constraintTop_toBottomOf="@id/toolbarRank"
-               android:src="@drawable/qrweb"/>
+               android:src="@drawable/ranking"
+    android:scaleType="centerInside"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

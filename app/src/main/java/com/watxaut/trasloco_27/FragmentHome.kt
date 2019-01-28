@@ -39,8 +39,6 @@ class FragmentHome : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        var editTextHome = view.findViewById(R.id.editTextHome) as EditText
     }
 
 

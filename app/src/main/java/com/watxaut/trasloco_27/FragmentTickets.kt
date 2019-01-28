@@ -17,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import com.afollestad.materialdialogs.MaterialDialog
 
 
 class FragmentTickets : Fragment() {
@@ -71,7 +72,19 @@ class FragmentTickets : Fragment() {
             if (launchIntent != null) {
                 startActivity(launchIntent)//null pointer check in case package name was not found
             }else{
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.geomobile.tmbmobile")))
+
+                MaterialDialog(activity!!).show {
+                    title(text = "Open TMB App")
+                    message(text = "To buy the tickets you must have TMB App Installed. Open Play Store?")
+                    positiveButton(R.string.yes) { _ ->
+                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.geomobile.tmbmobile")))
+                    }
+                    negativeButton(R.string.no) {
+                        cancel()
+                    }
+
+                }
+
                 Log.i("FRAGMENTTICKET", "App not installed, opening Market")
             }
         }

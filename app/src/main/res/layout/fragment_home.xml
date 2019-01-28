@@ -14,12 +14,13 @@
             android:gravity="center_horizontal"
             android:drawableTop="@drawable/ic_home_black_24dp"/>
 
-    <EditText
-            android:id="@+id/editTextHome"
+    <Button
+            android:id="@+id/buttonwhere"
             android:hint="Where do you want to go?"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:layout_below="@id/textViewHome"
     />
 
 

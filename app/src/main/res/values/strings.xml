@@ -7,4 +7,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="share">Share</string>
     <string name="send_to">Share the app</string>
+    <string name="yes">Yes</string>
+    <string name="no">Not now</string>
+
 </resources>

@@ -10,7 +10,7 @@
             android:id="@+id/fabbuy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_subway_white_18dp"
+            android:src="@drawable/exitapp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_margin="16dp"
@@ -73,7 +73,7 @@
                                 android:thicknessRatio="1.9">
 
                             <ImageView
-                                    android:layout_height="80dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_width="match_parent"
                                     android:scaleType="centerCrop"
                                     android:src="@drawable/img">
@@ -90,10 +90,10 @@
                                 android:shape="ring"
                                 android:thicknessRatio="1.9">
                             <ImageView
-                                    android:layout_height="80dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_width="match_parent"
                                     android:scaleType="centerCrop"
-                                    android:src="@drawable/img">
+                                    android:src="@drawable/lina">
                             </ImageView>
                         </androidx.cardview.widget.CardView>
                         <androidx.cardview.widget.CardView
@@ -106,10 +106,26 @@
                                 android:shape="ring"
                                 android:thicknessRatio="1.9">
                             <ImageView
-                                    android:layout_height="80dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_width="match_parent"
                                     android:scaleType="centerCrop"
-                                    android:src="@drawable/img">
+                                    android:src="@drawable/alberto">
+                            </ImageView>
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:elevation="12dp"
+                                app:cardCornerRadius="25dp"
+                                android:innerRadius="0dp"
+                                android:layout_margin="8dp"
+                                android:shape="ring"
+                                android:thicknessRatio="1.9">
+                            <ImageView
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="match_parent"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/andrea">
                             </ImageView>
                         </androidx.cardview.widget.CardView>
 
@@ -163,7 +179,7 @@
                                 android:layout_margin="8dp"
                                 android:thicknessRatio="1.9">
                             <ImageView
-                                    android:layout_height="80dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_width="match_parent"
                                     android:scaleType="centerCrop"
                                     android:src="@drawable/img">
@@ -220,7 +236,7 @@
                                 android:layout_margin="8dp"
                                 android:thicknessRatio="1.9">
                             <ImageView
-                                    android:layout_height="80dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_width="match_parent"
                                     android:scaleType="centerCrop"
                                     android:src="@drawable/img">

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.FrameLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -29,25 +30,26 @@ class MainActivity : AppCompatActivity()  {
     private lateinit var result: Drawer
     private lateinit var headerResult: AccountHeader
 
+//    private lateinit var fragmentHome: FragmentHome
+    private lateinit var fragmentMaps: FragmentMaps
+    private lateinit var fragmentTickets: FragmentTickets
+
 
     private val mOnNavigationItemSelectedListener = object : BottomNavigationView.OnNavigationItemSelectedListener {
         override fun onNavigationItemSelected(item: MenuItem): Boolean {
             when (item.itemId) {
-                R.id.navigation_home -> {
-
-                    val fragment = FragmentHome.Companion.newInstance()
-                    addFragment(fragment)
-
-                    return true
-                }
+//                R.id.navigation_home -> {
+//
+//                    addFragment(fragmentHome)
+//
+//                    return true
+//                }
                 R.id.navigation_maps -> {
-                    val fragment = FragmentMaps()
-                    addFragment(fragment)
+                    addFragment(fragmentMaps)
                     return true
                 }
                 R.id.navigation_tickets -> {
-                    var fragment = FragmentTickets()
-                    addFragment(fragment)
+                    addFragment(fragmentTickets)
                     return true
                 }
             }
@@ -71,8 +73,11 @@ class MainActivity : AppCompatActivity()  {
         val navigation = findViewById<BottomNavigationView>(R.id.navigation)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val fragment = FragmentHome.Companion.newInstance()
-        addFragment(fragment)
+        // fragmentHome = FragmentHome.newInstance()
+        fragmentMaps = FragmentMaps()
+        fragmentTickets = FragmentTickets()
+
+        addFragment(fragmentMaps)
 
         result = drawer {
             toolbar = this@MainActivity.toolbar
@@ -104,10 +109,10 @@ class MainActivity : AppCompatActivity()  {
                     MaterialDialog(this@MainActivity).show {
                         title(text = "Share the app")
                         message(text = "Share the app with your friends and get a 5€ discount")
-                        positiveButton(R.string.share) { dialog ->
+                        positiveButton(R.string.share) { _ ->
                             val sendIntent: Intent = Intent().apply {
                                 action = Intent.ACTION_SEND
-                                putExtra(Intent.EXTRA_TEXT, "Weigo is the new way to move around Barcelona! Check it out: http://link.com")
+                                putExtra(Intent.EXTRA_TEXT, "Weigo is the new way to move around Barcelona! Check it out: https://play.google.com/apps/testing/com.watxaut.trasloco_27")
                                 type = "text/plain"
                             }
                             startActivity(Intent.createChooser(sendIntent, resources.getText(R.string.send_to)))
@@ -119,15 +124,11 @@ class MainActivity : AppCompatActivity()  {
 
                 icon = R.drawable.baseline_thumb_up_alt_black_18dp
             }
-            secondaryItem("Settings") { icon = R.drawable.baseline_settings_black_18dp }
-
-            footer {
-                primaryItem("Log Out") { icon = R.drawable.baseline_eject_black_18dp}
-            }
 
         }
 
         setUpMap()
+
     }
 
     private fun setUpMap() {
