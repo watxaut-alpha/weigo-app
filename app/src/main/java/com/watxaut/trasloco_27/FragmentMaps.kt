@@ -165,13 +165,6 @@ class FragmentMaps : SupportMapFragment() {
 //            googleMap!!.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
         }
 
-
-
-
-
-
-
-
         return rootView
     }
 
